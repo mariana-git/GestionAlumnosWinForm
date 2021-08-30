@@ -9,36 +9,32 @@ namespace Programa1DB
     {
         // establezco los parámetros para la conexion
         static private string conexion = "datasource=127.0.0.1;port=3306;username=root;password=;database=alumnos;sslmode=none;persistsecurityinfo=true;";
-        private string sentencia;
         private MySqlConnection CN = new MySqlConnection(conexion);
 
         private MySqlConnection Conectar()
         {
+            //Metodo para abrir la conexion
             if (CN.State == ConnectionState.Open) CN.Close();
             CN.Open();
             return CN;
         }
 
-        private MySqlConnection Desconectar()
+        public MySqlConnection Desconectar()
         {
+            //Nétodo para cerrar la conexion
             if (CN.State == ConnectionState.Open) CN.Close();
             return CN;
         }
-        public DataTable Consultas(string txtbuscar)
+
+        public MySqlDataReader Leer(string sentencia)
         {
-            DataTable dt = new DataTable();
-
-            if (txtbuscar != "") sentencia = $"SELECT * FROM datos WHERE Nombre LIKE '%{txtbuscar}%' OR Apellido LIKE '%{txtbuscar}%' OR Direccion LIKE '%{txtbuscar}%'";
-            else sentencia = "SELECT * FROM datos";
-
             MySqlCommand comandosBD = new MySqlCommand(sentencia, CN);
-            comandosBD.CommandTimeout = 60;
+            comandosBD.CommandTimeout = 20;
             Conectar();
             MySqlDataReader leer = comandosBD.ExecuteReader();
-            dt.Load(leer);
-            Desconectar();
-            return dt;
+            return leer;
         }
+        
     }
 }
 

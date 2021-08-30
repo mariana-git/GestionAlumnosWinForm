@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace Programa1DB
 {
-    public partial class Form1 : Form
+    public partial class Inicio : Form
     {
 
 
@@ -19,7 +19,7 @@ namespace Programa1DB
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
-        public Form1()
+        public Inicio()
         {
             InitializeComponent();
             AcceptButton = btnConsultar;
