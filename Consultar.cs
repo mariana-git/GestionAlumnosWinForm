@@ -32,7 +32,7 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO PUDO REALIZARSE LA CONEXION A LA BBDD\n\n" + error.ToString());
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(),"Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void btnSalir_Click(object sender, EventArgs e)

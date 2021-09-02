@@ -62,7 +62,7 @@ namespace Programa1DB
             this.btnConsultar.TabIndex = 1;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = false;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            this.btnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
             // 
             // btnInsertar
             // 
@@ -79,7 +79,7 @@ namespace Programa1DB
             this.btnInsertar.TabIndex = 2;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = false;
-            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
+            this.btnInsertar.Click += new System.EventHandler(this.BtnInsertar_Click);
             // 
             // btnEliminiar
             // 
@@ -96,7 +96,7 @@ namespace Programa1DB
             this.btnEliminiar.TabIndex = 3;
             this.btnEliminiar.Text = "Eliminar";
             this.btnEliminiar.UseVisualStyleBackColor = false;
-            this.btnEliminiar.Click += new System.EventHandler(this.btnEliminiar_Click);
+            this.btnEliminiar.Click += new System.EventHandler(this.BtnEliminiar_Click);
             // 
             // btnModificar
             // 
@@ -113,7 +113,7 @@ namespace Programa1DB
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // btnSalir
             // 
@@ -131,7 +131,7 @@ namespace Programa1DB
             this.btnSalir.Size = new System.Drawing.Size(22, 22);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // panelHijas
             // 
@@ -160,6 +160,7 @@ namespace Programa1DB
             // panelLateral
             // 
             this.panelLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(9)))), ((int)(((byte)(93)))));
+            this.panelLateral.Controls.Add(this.pictureBox2);
             this.panelLateral.Controls.Add(this.label1);
             this.panelLateral.Controls.Add(this.btnEliminiar);
             this.panelLateral.Controls.Add(this.btnConsultar);
@@ -175,45 +176,45 @@ namespace Programa1DB
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Location = new System.Drawing.Point(9, 32);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(104, 20);
+            this.label1.Size = new System.Drawing.Size(94, 20);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Palabra Clave:";
+            this.label1.Text = "Palabra Clave";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(160, 33);
+            this.txtBuscar.BackColor = System.Drawing.Color.Aquamarine;
+            this.txtBuscar.Location = new System.Drawing.Point(136, 33);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(419, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(443, 20);
             this.txtBuscar.TabIndex = 9;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(134, 33);
+            this.pictureBox2.Location = new System.Drawing.Point(99, 33);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
-            // Form1
+            // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(35)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(591, 369);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.panelLateral);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panelHijas);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Inicio";
             this.Text = "Alumnos";
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.panelHijas.ResumeLayout(false);

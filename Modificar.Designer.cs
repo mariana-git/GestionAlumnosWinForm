@@ -66,6 +66,7 @@ namespace Programa1DB
             // 
             // txtID
             // 
+            this.txtID.BackColor = System.Drawing.Color.Aquamarine;
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(180, 13);
             this.txtID.Name = "txtID";
@@ -76,10 +77,10 @@ namespace Programa1DB
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(60, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 16);
+            this.label1.Size = new System.Drawing.Size(101, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "ID a Modificar:";
             // 
@@ -148,6 +149,7 @@ namespace Programa1DB
             // 
             // txtDireccion
             // 
+            this.txtDireccion.BackColor = System.Drawing.Color.Aquamarine;
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.Location = new System.Drawing.Point(209, 124);
             this.txtDireccion.Name = "txtDireccion";
@@ -156,6 +158,7 @@ namespace Programa1DB
             // 
             // txtApellido
             // 
+            this.txtApellido.BackColor = System.Drawing.Color.Aquamarine;
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.Location = new System.Drawing.Point(209, 99);
             this.txtApellido.Name = "txtApellido";
@@ -164,6 +167,7 @@ namespace Programa1DB
             // 
             // txtNombre
             // 
+            this.txtNombre.BackColor = System.Drawing.Color.Aquamarine;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(209, 74);
             this.txtNombre.Name = "txtNombre";

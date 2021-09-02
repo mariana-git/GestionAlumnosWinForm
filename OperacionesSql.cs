@@ -1,34 +1,39 @@
 ﻿
+using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace Programa1DB
 {
     class OperacionesSql
     {
+        #region ATRIBUTOS
         private string sentencia;
-        private Conexiones SqlConsulta = new Conexiones();
+        private readonly Conexiones SqlConsulta = new Conexiones();
 
+        #endregion
+        #region MÉTODOS
         public DataTable Consultar(string txtbuscar)
         //consultas sobre la tabla (todo o solo lo consultado)
         {
             DataTable dt = new DataTable();
 
+            //si el usuario no ingreso parámetros de consulta, se trae toda la tabla, sino se busca en la base con LIKE
             if (txtbuscar != "") sentencia = $"SELECT * FROM datos WHERE IDAlumno LIKE '%{txtbuscar}%' OR Nombre LIKE '%{txtbuscar}%' OR Apellido LIKE '%{txtbuscar}%' OR Direccion LIKE '%{txtbuscar}%'";
             else sentencia = "SELECT * FROM datos";
-            var leer = SqlConsulta.Leer(sentencia);
+
+            var leer = SqlConsulta.Conectar(sentencia);
             dt.Load(leer);
-            if (dt.Rows.Count == 0) MessageBox.Show("La búsqueda no arrojó resultados");
+            if (dt.Rows.Count == 0) throw new Exception("LA BUSQUEDA NO ARROJÓ RESULTADOS\n\n");
             SqlConsulta.Desconectar();
             return dt;
         }
 
         public string[] Consultar(string borrarID, string accion)
-            //sobrecargo el metodo para las consultas de ID especifica para eliminar como para modificar
+        //sobrecargo el metodo para las consultas en las  que se carga una ID especifica (form eliminar y form modificar)
         {
             sentencia = "SELECT * FROM datos WHERE datos.IDAlumno = " + borrarID;
             string[] resultado = new string[4];
-            var leer = (SqlConsulta.Leer(sentencia));
+            var leer = SqlConsulta.Conectar(sentencia);
 
             if (leer.HasRows)
             {
@@ -37,10 +42,9 @@ namespace Programa1DB
                 {
                     resultado[i] = leer.GetString(i);
                 }
-
                 resultado[0] = leer.GetString(0);
                 
-            } else MessageBox.Show("La búsqueda no arrojó resultados");
+            } else throw new Exception("LA BUSQUEDA NO ARROJÓ RESULTADOS\n\n");
             SqlConsulta.Desconectar();
             return resultado;
         }
@@ -49,7 +53,7 @@ namespace Programa1DB
             //elimino registro de la ID ingresada por el usuario
         {
             sentencia = "DELETE FROM datos WHERE datos.IDAlumno = " + borrarID;
-            SqlConsulta.Leer(sentencia);
+            SqlConsulta.Conectar(sentencia);
             SqlConsulta.Desconectar();
         }
 
@@ -100,19 +104,22 @@ namespace Programa1DB
                     break;
 
                 default:
-                    break;
+                    throw new Exception("FALTAN PARÁMETROS DE BÚSQUEDA\n\n");
             }
             //********************  Hasta acá la ESTRUCTURA DE CONTROL PARA MODIFICACIONES  ***********************
 
-            SqlConsulta.Leer(sentencia);
+            SqlConsulta.Conectar(sentencia);
             SqlConsulta.Desconectar();
         }
 
         public void Insertar (string nombre, string apellido, string direccion)
         {
+
             sentencia = "INSERT INTO datos (IDAlumno,Nombre,Apellido,Direccion) VALUES (NULL,'" + nombre + "','" + apellido + "','" + direccion + "')";
-            SqlConsulta.Leer(sentencia);
+            SqlConsulta.Conectar(sentencia);
             SqlConsulta.Desconectar();
         }
+
+        #endregion
     }
 }

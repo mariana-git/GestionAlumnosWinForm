@@ -1,17 +1,19 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace Programa1DB
 {
     public partial class Insertar : Form
     {
+        #region MÉTODOS
         public Insertar()
         {
             InitializeComponent();
             AcceptButton = btnAgregar;
         }
+        #endregion
 
+        #region BOTONES
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -20,17 +22,22 @@ namespace Programa1DB
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text, apellido = txtApellido.Text, direccion = txtDireccion.Text;
-            try
+            if (!(nombre == "" || apellido == "" || direccion == ""))
             {
-                OperacionesSql conectar = new OperacionesSql();
-                conectar.Insertar(nombre, apellido, direccion);
-                MessageBox.Show("Registro agregado con éxito!", "VIVA PERON");
-                this.Dispose();
+                try
+                {
+                    OperacionesSql conectar = new OperacionesSql();
+                    conectar.Insertar(nombre, apellido, direccion);
+                    MessageBox.Show("Registro agregado con éxito!");
+                    this.Dispose();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.ToString());
-            }
+            else MessageBox.Show("Debe completar todos los campos");
         }
+        #endregion
     }
 }

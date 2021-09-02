@@ -1,18 +1,20 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace Programa1DB
 {
     public partial class Modificar : Form
     {
+        #region MÉTODOS
         public Modificar()
         {
             InitializeComponent();
             AcceptButton = btnMostrar;
             gbxMuestra.Visible = false;
         }
+        #endregion
 
+        #region BOTONES
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             gbxMuestra.Visible = true;
@@ -32,7 +34,7 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO PUDO REALIZARSE LA CONEXION A LA BBDD\n\n" + error.ToString());
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -53,16 +55,18 @@ namespace Programa1DB
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show("NO PUDO REALIZARSE LA CONEXION A LA BBDD\n\n" + error.ToString());
+                    MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else MessageBox.Show("No se ingresaron datos a modificar");
+            else MessageBox.Show("No se ingresaron datos a modificar!");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
         }
+
+        #endregion
     }
 
 }

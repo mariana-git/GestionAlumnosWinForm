@@ -1,17 +1,20 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using System.Data;
 
 namespace Programa1DB
 {
     public partial class Eliminar : Form
     {
+        #region MÉTODOS
         public Eliminar()
         {
             InitializeComponent();
             AcceptButton = btnMostrar;
+            gbxMuestra.Visible = false;
         }
+        #endregion
+
+        #region BOTONES
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -19,6 +22,7 @@ namespace Programa1DB
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             string borrar = txtID.Text;
+            gbxMuestra.Visible = true;
 
             try
             {
@@ -34,10 +38,9 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO PUDO REALIZARSE LA CONEXION A LA BBDD\n\n" + error.ToString());
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(),"Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             string borrar = txtID.Text;
@@ -51,9 +54,10 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO PUDO REALIZARSE LA CONEXION A LA BBDD\n\n" + error.ToString());
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
         }
+        #endregion
+
     }
 }
