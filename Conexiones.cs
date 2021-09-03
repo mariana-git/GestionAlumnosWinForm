@@ -16,10 +16,10 @@ namespace Programa1DB
         #endregion
 
         #region MÉTODOS
-        public MySqlDataReader Conectar(string sentencia)
+        public MySqlDataReader ConectarYLeer(string sentencia)
         {
             MySqlCommand comandosBD = new MySqlCommand(sentencia, CN);
-            comandosBD.CommandTimeout = 20;
+            comandosBD.CommandTimeout = 10;
             if (CN.State == ConnectionState.Open) CN.Close();
             CN.Open();
             MySqlDataReader leer = comandosBD.ExecuteReader();

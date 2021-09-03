@@ -12,21 +12,25 @@ namespace Programa1DB
             AcceptButton = btnMostrar;
             gbxMuestra.Visible = false;
         }
+        private void txtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones verificar = new Validaciones();
+            verificar.SoloNumeros(e);
+        }
         #endregion
 
         #region BOTONES
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            gbxMuestra.Visible = true;
-            string modificar = txtID.Text;
+            string idModificar = txtID.Text;
 
             try
             {
                 //instancio la clase Consultas y creo un objeto para conectar y pasar los parámetros de busqueda 
                 OperacionesSql conectar = new OperacionesSql();
 
-                var registro = conectar.Consultar(modificar, modificar);
-
+                var registro = conectar.ConsultarID(idModificar);
+                gbxMuestra.Visible = true;
                 lblNombre.Text = registro[1].ToString();
                 lblApellido.Text = registro[2].ToString();
                 lblDireccion.Text = registro[3].ToString();
@@ -34,7 +38,7 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(), "Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

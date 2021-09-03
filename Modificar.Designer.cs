@@ -73,6 +73,7 @@ namespace Programa1DB
             this.txtID.Size = new System.Drawing.Size(44, 22);
             this.txtID.TabIndex = 7;
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
             // 
             // label1
             // 

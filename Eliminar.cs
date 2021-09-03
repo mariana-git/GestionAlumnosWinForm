@@ -12,6 +12,11 @@ namespace Programa1DB
             AcceptButton = btnMostrar;
             gbxMuestra.Visible = false;
         }
+        private void txtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones verificar = new Validaciones();
+            verificar.SoloNumeros(e);
+        }
         #endregion
 
         #region BOTONES
@@ -21,16 +26,16 @@ namespace Programa1DB
         }
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            string borrar = txtID.Text;
-            gbxMuestra.Visible = true;
+            string idBorrar = txtID.Text;
 
             try
             {
-                //instancio la clase Consultas y creo un objeto para conectar y pasar los parámetros de busqueda 
+                //instancio la clase Consultas para conectar y pasar el id a buscar 
                 OperacionesSql conectar = new OperacionesSql();
                 
-                var registro = conectar.Consultar(borrar, borrar);
+                var registro = conectar.ConsultarID(idBorrar);
 
+                gbxMuestra.Visible = true;
                 lblNombre.Text = registro[1].ToString();
                 lblApellido.Text = registro[2].ToString();
                 lblDireccion.Text = registro[3].ToString();
@@ -38,7 +43,7 @@ namespace Programa1DB
             }
             catch (Exception error)
             {
-                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n" + error.ToString(),"Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("NO FUE POSIBLE REALIZAR LA ACCIÓN\n\n " + error.ToString(),"Vuelva a intentarlo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -58,6 +63,5 @@ namespace Programa1DB
             }
         }
         #endregion
-
     }
 }

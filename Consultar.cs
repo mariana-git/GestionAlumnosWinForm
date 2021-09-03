@@ -7,7 +7,7 @@ namespace Programa1DB
 {
     public partial class Consultar : Form
     {
-        private string buscar;//creo var para almacenar el txt de busqeuda del form1
+        private string buscar;//variable para almacenar el txt de busqeuda capturada del form Inicio
         public Consultar(string txtbuscar)
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Programa1DB
                 //instancio la clase Consultas y creo un objeto para conectar y pasar los parámetros de busqueda 
                 OperacionesSql conectar = new OperacionesSql();
                
-                dgvDatos.DataSource = conectar.Consultar(buscar);//Cargo el datagridview con la tabla q devuelve el método Consultas de la clase Conexion
+                dgvDatos.DataSource = conectar.ConsultarGral(buscar);//Cargo el datagridview con la tabla q devuelve el método Consultas de la clase Conexion
             }
             catch (Exception error)
             {
